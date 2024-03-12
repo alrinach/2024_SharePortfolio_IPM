@@ -29,12 +29,12 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    -name: SonarCloudScan
+    - name: SonarCloudScan
       run: mvn -B verify sonar:sonar
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN}}
-    -name: Check Javadoc
+    - name: Check Javadoc
       run: mvnjavadoc:javadoc
-    -name: Check Licences
+    - name: Check Licences
       run: mvnapache-rat:check
